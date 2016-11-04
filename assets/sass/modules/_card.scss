@@ -13,23 +13,20 @@
 	border: rem(2) solid $color-alto;
 	margin-bottom: $gutter;
 	padding: $gutter;
-	width: rem(300);
+	width: 100%;
 
 	$max: 5;
 
-	&.span-width {
-
-		// Loop through class names.
-		@for $i from 1 through 5 {
-			&.#{$i} {
-				@if $i <= $max {
-					width: calc(100% / $i);
-				} @else {
-					width: 33.33%;
-				}
-			} // &-#{$i}
-		} // end for | from | through
-	} // .span-width
+	// Loop through class names.
+	@for $i from 1 through 5 {
+		&.span-column-#{$i} {
+			@if $i <= $max {
+				width: calc(100% / #{$i});
+			} @else {
+				width: 33.33%;
+			}
+		} // &-#{$i}
+	} // end for | from | through
 
 	.card-content-area {
 
