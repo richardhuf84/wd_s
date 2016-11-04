@@ -15,7 +15,7 @@
 	</div>
 
 	<header class="card-header">
-		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+		<?php the_title( sprintf( '<h3><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' ); ?>
 	</header><!-- .card-header -->
 
 	<div class="card-copy">
@@ -23,6 +23,7 @@
 	</div><!-- .card-copy -->
 
 	<footer class="card-footer">
-		<?php _s_entry_footer(); ?>
+		<?php _s_content_more_link(); ?>
+		<!-- <?php _s_entry_footer(); ?> -->
 	</footer><!-- .card-footer -->
 </article><!-- .card -->
