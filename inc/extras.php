@@ -137,6 +137,8 @@ function _s_get_card_loop( $args = array() ) {
 
 		endwhile;
 
+		wp_reset_postdata(); ?>
+
 		the_posts_navigation(); ?>
 		</div>
 
