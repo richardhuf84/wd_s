@@ -482,3 +482,45 @@ function _s_get_social_network_links() {
 	<?php
 	return ob_get_clean();
 }
+
+/**
+ * Output card markup.
+ *
+ * @return mixed HTML output of card markup.
+ */
+function _s_get_card( $args = array() ) {
+
+	// Set defaults.
+	$defaults = array(
+		"num_col" => "3"
+	);
+
+	// Parse args.
+	$args = wp_parse_args( $args, $defaults );
+
+
+	// Kickoff our output buffer
+	ob_start(); ?>
+
+	<article class="card span-column-<?php echo esc_html( $args[ 'num_col' ] ); ?>">
+		<div class="card-image">
+			<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/placeholder.png" alt="">
+		</div>
+
+		<header class="card-header">
+			<?php the_title( sprintf( '<h3><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' ); ?>
+		</header><!-- .card-header -->
+
+		<div class="card-copy">
+			<?php the_excerpt(); ?>
+		</div><!-- .card-copy -->
+
+		<footer class="card-footer">
+			<?php _s_content_more_link(); ?>
+			<!-- <?php _s_entry_footer(); ?> -->
+		</footer><!-- .card-footer -->
+	</article><!-- .card -->
+
+	<?php
+	return ob_get_clean();
+}
