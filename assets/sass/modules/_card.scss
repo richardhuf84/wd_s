@@ -1,3 +1,30 @@
 //--------------------------------------------------------------
 // Card Styling
 //--------------------------------------------------------------
+.card-container {
+	@include margin-padding-reset;
+
+	align-content: stretch;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+} // .card-container
+
+.card {
+	// @include fill-parent;
+
+	background-color: $color-whitesmoke;
+	border: rem(2) solid $color-alto;
+	margin-bottom: $gutter;
+	padding: $gutter;
+	width: rem(300);
+
+	.card-content-area {
+
+		.card-footer {
+			a {
+				text-decoration: underline;
+			} // a
+		} // .card-footer
+	} // .card-content-area
+} // .card
