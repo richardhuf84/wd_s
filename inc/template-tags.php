@@ -486,6 +486,8 @@ function _s_get_social_network_links() {
 /**
  * Output card markup.
  *
+ * @param  array  $args  Parameters include number of cards.
+ *
  * @return mixed HTML output of card markup.
  */
 function _s_get_card( $args = array() ) {
@@ -495,6 +497,7 @@ function _s_get_card( $args = array() ) {
 		"num_col" => '3'
 	);
 
+	// Assign class to variable if 5 or less, otherwise default to 3.
 	if ( $args[ 'num_col' ] <= '5' ) {
 		$columns = $args[ 'num_col' ];
 	} else {
