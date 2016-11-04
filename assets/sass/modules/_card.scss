@@ -1,6 +1,10 @@
 //--------------------------------------------------------------
 // Card Styling
 //--------------------------------------------------------------
+
+//--------------------------------------------------------------
+// Card Container Styling
+//--------------------------------------------------------------
 .card-container {
 	align-content: stretch;
 	display: flex;
@@ -8,6 +12,10 @@
 	justify-content: space-around;
 } // .card-container
 
+
+//--------------------------------------------------------------
+// Individual Card Styling
+//--------------------------------------------------------------
 .card {
 	background-color: $color-whitesmoke;
 	border: rem(2) solid $color-alto;
@@ -39,6 +47,8 @@
 	.card-content-area {
 
 		.card-footer {
+
+			// Read more link.
 			a {
 				text-decoration: underline;
 			} // a
