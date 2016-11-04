@@ -492,8 +492,14 @@ function _s_get_card( $args = array() ) {
 
 	// Set defaults.
 	$defaults = array(
-		"num_col" => "3"
+		"num_col" => '3'
 	);
+
+	if ( $args[ 'num_col' ] <= '5' ) {
+		$columns = $args[ 'num_col' ];
+	} else {
+		$columns = $defaults[ 'num_col' ];
+	}
 
 	// Parse args.
 	$args = wp_parse_args( $args, $defaults );
@@ -502,7 +508,7 @@ function _s_get_card( $args = array() ) {
 	// Kickoff our output buffer
 	ob_start(); ?>
 
-	<article class="card span-column-<?php echo esc_html( $args[ 'num_col' ] ); ?>">
+	<article class="card span-column-<?php echo esc_html( $columns ); ?>">
 		<div class="card-image">
 			<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/placeholder.png" alt="">
 		</div>
