@@ -11,7 +11,7 @@
 
 <article class="card">
 	<div class="card-image">
-		<img src="" alt="">
+		<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/placeholder.png" alt="">
 	</div>
 
 	<header class="card-header">
