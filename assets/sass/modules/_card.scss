@@ -15,19 +15,27 @@
 	padding: $gutter;
 	width: 100%;
 
+	// Max number of cards in row.
 	$max: 5;
 
-	// Loop through class names.
+	// Loop through class names to apply margin + width.
 	@for $i from 1 through 5 {
 		&.span-column-#{$i} {
 			@if $i <= $max {
-				width: calc(100% / #{$i});
+				margin-right: 2%;
+				width: calc(100% / #{$i} - 2%);
 			} @else {
 				width: 33.33%;
+			}
+
+			// Get rid of margin on last card.
+			&:nth-child(#{$i}n) {
+				margin-right: 0;
 			}
 		} // &-#{$i}
 	} // end for | from | through
 
+	// Card content.
 	.card-content-area {
 
 		.card-footer {
