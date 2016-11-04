@@ -95,3 +95,54 @@ function _s_post_thumbnail_sizes_attr( $attr, $attachment, $size ) {
 	return $attr;
 }
 add_filter( 'wp_get_attachment_image_attributes', '_s_post_thumbnail_sizes_attr', 10 , 3 );
+
+/**
+ * Get loop of cards.
+ *
+ * @param array  $args Card loop arguments
+ *
+ **/
+function _s_get_card_loop( $args = array() ) {
+
+	$defaults = array(
+		'post_type' => 'post',
+		'num_cards' => '',
+		'num_post'  => -1,
+	);
+
+	$args = wp_parse_args( $args, $defaults );
+
+	$value = array(
+		'ignore_sticky_posts' => true,
+		'posts_per_page'      => (int) $args['num_post'],
+	);
+
+	$query = new WP_Query( $value );
+
+	if ( $query->have_posts() ) : ?>
+
+		<div class="card-container">
+
+		<?php
+
+		/* Start the Loop */
+		while ( $query->have_posts() ) : $query->the_post();
+
+			/*
+			 * Get card template tag.
+			 */
+			echo _s_get_card( array(
+				'num_col' => $args['num_cards']
+			));
+
+		endwhile;
+
+		the_posts_navigation(); ?>
+		</div>
+
+	<?php else :
+
+		get_template_part( 'template-parts/content', 'none' );
+
+	endif;
+}
