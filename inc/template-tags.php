@@ -123,13 +123,7 @@ add_action( 'save_post',     '_s_category_transient_flusher' );
 /**
  * Return SVG markup.
  *
- * @param  array  $args {
- *     Parameters needed to display an SVG.
- *
- *     @param string $icon Required. Use the icon filename, e.g. "facebook-square".
- *     @param string $title Optional. SVG title, e.g. "Facebook".
- *     @param string $desc Optional. SVG description, e.g. "Share this post on Facebook".
- * }
+ * @param array $args SVG defaults.
  * @return string SVG markup.
  */
 function _s_get_svg( $args = array() ) {
@@ -478,39 +472,36 @@ function _s_get_social_network_links() {
 	<?php
 	return ob_get_clean();
 }
-<<<<<<< HEAD
 
 /**
  * Output card markup.
  *
- * @param  array  $args  Parameters include number of cards.
- *
+ * @param  array $args Parameters include number of cards.
  * @return mixed HTML output of card markup.
+ * @author Allison Tarr Jo Murgel
  */
 function _s_get_card( $args = array() ) {
 
 	// Set defaults.
 	$defaults = array(
-		"num_col" => '3'
+		'num_col' => '3',
 	);
 
 	// Assign class to variable if 5 or less, otherwise default to 3.
-	if ( $args[ 'num_col' ] <= '5' ) {
-		$columns = $args[ 'num_col' ];
+	if ( $args['num_col'] <= '5' ) {
+		$columns = absint( $args['num_col'] );
 	} else {
-		$columns = $defaults[ 'num_col' ];
+		$columns = absint( $defaults['num_col'] );
 	}
 
 	// Parse args.
 	$args = wp_parse_args( $args, $defaults );
 
-
-	// Kickoff our output buffer
 	ob_start(); ?>
 
-	<article class="card span-column-<?php echo esc_html( $columns ); ?>">
+	<article class="card span-column-<?php echo absint( $columns ); ?>">
 		<div class="card-image">
-			<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/placeholder.png" alt="">
+			<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/placeholder.png" alt="<?php the_title(); ?>">
 		</div>
 
 		<header class="card-header">
@@ -523,12 +514,10 @@ function _s_get_card( $args = array() ) {
 
 		<footer class="card-footer">
 			<?php _s_content_more_link(); ?>
-			<!-- <?php _s_entry_footer(); ?> -->
+			<?php _s_entry_footer(); ?>
 		</footer><!-- .card-footer -->
 	</article><!-- .card -->
 
 	<?php
 	return ob_get_clean();
 }
-=======
->>>>>>> master

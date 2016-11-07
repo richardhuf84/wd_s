@@ -106,24 +106,24 @@ add_filter( 'wp_get_attachment_image_attributes', '_s_post_thumbnail_sizes_attr'
 /**
  * Get loop of cards.
  *
- * @param array  $args Card loop arguments
- *
- **/
+ * @param array $args Card loop arguments.
+ * @author Allison Tarr Jo Murgel
+ */
 function _s_get_card_loop( $args = array() ) {
 
+	// Set defaults.
 	$defaults = array(
-		'post_type' => 'post',
-		'num_cards' => '',
-		'num_post'  => -1,
+		'ignore_sticky_posts' => true,
+		'num_cards'           => '',
+		'num_post'            => -1,
+		'post_type'           => 'post',
+		'posts_per_page'      => absint( $args['num_post'] ),
 	);
 
+	// Parse args.
 	$args = wp_parse_args( $args, $defaults );
 
-	$value = array(
-		'ignore_sticky_posts' => true,
-		'posts_per_page'      => (int) $args['num_post'],
-	);
-
+	// Query the posts.
 	$query = new WP_Query( $value );
 
 	if ( $query->have_posts() ) : ?>
@@ -138,9 +138,9 @@ function _s_get_card_loop( $args = array() ) {
 			/*
 			 * Get card template tag.
 			 */
-			echo _s_get_card( array(
-				'num_col' => $args['num_cards']
-			));
+			echo _s_get_card( array(  // WPCS: XSS OK.
+				'num_col' => absint( $args['num_cards'] ),
+			) );
 
 		endwhile;
 
