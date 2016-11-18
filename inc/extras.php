@@ -124,7 +124,7 @@ function _s_get_card_loop( $args = array() ) {
 	$args = wp_parse_args( $args, $defaults );
 
 	// Query the posts.
-	$query = new WP_Query( $value );
+	$query = new WP_Query( $args );
 
 	if ( $query->have_posts() ) : ?>
 
